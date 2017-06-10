@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/reservations.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/date.css') }}" type="text/css" media="all">
+    <title>Alternatives</title>
+</head>
+<body>
+
+
+<div class="page">
+ <h1>Alternatives</h1>
+<table class="layout display responsive-table">
+    <thead>
+        <tr>
+            <th>Table</th>
+            <th>Capacity</th>
+            <th>Smoking</th>
+            <th>Outside</th>
+            <th>Bar</th>
+            <th colspan="2">Handicapped</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for record in alternatives %}
+            <tr>
+                <td class="organisationnumber">{{record.table_id}}</td>
+                <td class="organisationnumber">{{record.capacity}}</td>
+                {% if record.smoking %}
+                <td class="organisationnumber">&#10004;</td>
+                {% else %}
+                <td class="organisationnumber">&#10008;</td>
+                {% endif %}
+                {% if record.outside %}
+                <td class="organisationnumber">&#10004;</td>
+                {% else %}
+                <td class="organisationnumber">&#10008;</td>
+                {% endif %}
+                {% if record.bar %}
+                <td class="organisationnumber">&#10004;</td>
+                {% else %}
+                <td class="organisationnumber">&#10008;</td>
+                {% endif %}
+                {% if record.handicapped %}
+                <td class="organisationnumber">&#10004;</td>
+                {% else %}
+                <td class="organisationnumber">&#10008;</td>
+                {% endif %}
+                <td class="actions">
+                    <a href="/make_reservation?firstname={{record.firstname}}&lastname={{record.lastname}}&date={{record.time}}&party={{record.party}}&smoking={{record.smoking}}&outside={{record.outside}}&bar={{record.bar}}&handicapped={{record.handicapped}}&phone={{record.phone}}" class="edit-item" title="Edit">Confirm</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>

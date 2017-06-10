@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/reservations.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/date.css') }}" type="text/css" media="all">
+    <title>Reservations</title>
+</head>
+<body>
+<div class="page">
+<center>
+    <form action="/reservations" method="GET" class="ws-validate">
+        <div align="left">
+            <b>Table ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+
+        <input type="number" name="table"><br>
+
+        <b>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+
+        <input type="text" name="name"><br>
+
+            <b>Party Size:&nbsp;&nbsp;</b>
+
+        <input type="number" name="party"><br>
+
+            <b>Time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+
+        <input type="datetime-local" name="time"/><br>
+            </div>
+        <input type="submit" value="Search">
+        </b>
+
+    </form>
+</center>
+
+    <center>
+        <form action="/new_reservation" method="GET">
+            <input type="submit" value="New Reservation">
+        </form>
+    </center>
+        <h1>Reservations</h1>
+<table class="layout display responsive-table">
+    <thead>
+        <tr>
+            <th>Table</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Party Size</th>
+            <th colspan="2">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for record in reservations %}
+            <tr>
+                <td class="organisationnumber">{{record.table_id}}</td>
+                <td class="organisationnumber">{{record.name}}</td>
+                <td class="organisationnumber">0{{record.phone}}</td>
+                <td class="organisationnumber">{{record.party}}</td>
+                <td class="organisationnumber">{{record.time}}</td>
+                <td class="actions">
+                    <a href="/edit?id={{record.reservation_id}}" class="edit-item" title="Edit">Edit</a>
+                    <a href="/delete?id={{record.reservation_id}}" class="remove-item" title="Remove">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>

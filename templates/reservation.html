@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/reservations.css') }}" type="text/css" media="all">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/date.css') }}" type="text/css" media="all">
+  <title>Reservations</title>
+</head>
+
+<body>
+<div class="page">
+  <form action="/make_reservation" method="GET">
+    <b>
+    First Name:
+    <input type="text" placeholder="first name" name="firstname"><br>
+    Last Name:
+    <input type="text" placeholder="last name" name="lastname"><br>
+    Party Size:
+    <input type="number" name="party"><br>
+    Arrival:
+    <input type="datetime-local" name="date" data-date-inline-picker="true"><br>
+    Smoking:
+    <input type="checkbox" name="smoking"><br>
+    Bar:
+    <input type="checkbox" name="bar"><br>
+    Handicapped:
+    <input type="checkbox" name="handicapped"><br>
+    Outside:
+    <input type="checkbox" name="outside"><br>
+    Phone Number:
+    <input type="text" placeholder="+972" name="phone"><br>
+    Special Requests:
+    <input type="text" placeholder="Special requests"><br>
+    <input type="submit" value="Submit">
+    </b>
+  </form>
+</div>
+</body>
+</html>
