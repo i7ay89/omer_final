@@ -29,6 +29,7 @@ def landing_page():
     return render_template('landing.html')
 
 
+
 @app.route('/reservations', methods=['GET'])
 def reservations_page():
     res_dict = reservations.create_reservations_dict(reservations.filter_reservations(cur,
